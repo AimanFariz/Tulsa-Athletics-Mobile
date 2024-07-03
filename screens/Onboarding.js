@@ -14,7 +14,7 @@ function Onboarding() {
     setTimeout(() => {
       // Start the image animation
       Animated.timing(imageTranslateY, {
-        toValue: -100,
+        toValue: -10,
         duration: 1000,
         useNativeDriver: true,
       }).start();
@@ -23,7 +23,7 @@ function Onboarding() {
       setShowText(true);
       Animated.parallel([
         Animated.timing(textTranslateY, {
-          toValue: 0, // Move to its original position
+          toValue: 10, // Move to its original position
           duration: 1000,
           useNativeDriver: true,
         }),
@@ -41,12 +41,13 @@ function Onboarding() {
       <Animated.View style={{ transform: [{ translateY: imageTranslateY }] }}>
         <Image
           style={styles.logoInitial}
-          source={require('../assets/Tulsa Logos/New_Logo_2022/JPG/Tulsa_Flags_BluBG.jpg')}
+          source={require('../assets/Tulsa Logos/New_Logo_2022/No BG/Tulsa_Flags_BluBG-removebg-preview.png')}
         />
       </Animated.View>
       {showText && (
-        <Animated.View style={{ transform: [{ translateY: textTranslateY }], opacity: textOpacity }}>
-          <Text style={styles.text}>Welcome back, Aiman Fariz Zaqwan!</Text> 
+        <Animated.View style={{ transform: [{ translateY: textTranslateY }], opacity: textOpacity, justifyContent:'center', alignItems:'center',gap:10}}>
+          <Text style={styles.textHead}>Good evening, Aiman Fariz Zaqwan!</Text>
+          <Text style={styles.textName}>Welcome back</Text>
         </Animated.View>
       )}
     </View>
@@ -68,11 +69,18 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
   },
-  text: {
+  textHead: {
     marginTop: 20,
     fontSize: 18,
     textAlign: 'center',
     color: 'white',
-    fontSize: 20
+    fontWeight:'bold'
   },
+  textName:{
+    fontSize:18,
+    color:'white'
+  },
+  animatedContainer:{
+    
+  }
 });
