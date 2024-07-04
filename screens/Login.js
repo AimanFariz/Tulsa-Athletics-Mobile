@@ -26,11 +26,45 @@ function Login() {
         </View>
         {/* Sign In Button */}
       <Pressable style={styles.button}>
-        <Text>Sign In</Text>
+        <Text style={styles.signInText}>Sign In</Text>
       </Pressable>
+      
       </View>
-      {/* Forgot password */}
-      <Text style={{color:'white',paddingTop:20}}>Forgot password?</Text>
+      {/* Forgot password and create account*/}
+      <Text style={{color:'white',marginTop:5}}>Forgot password?</Text>
+      <Text style={{color:'white',marginTop:5}}>Don't have an account yet? <Text>Register Now</Text> </Text>
+
+      {/* Or line */}
+      <View style={{flexDirection: 'row', alignItems: 'center'}}>
+      
+        
+        <View style={styles.line} />
+        <View>
+          <Text style={{width: 50, textAlign: 'center', color:'white', margin:10}}>or</Text>
+        </View>
+        <View style={styles.line} />
+      </View>
+
+      {/* Sign In Buttons */}
+      <View style={{flexDirection: 'column', alignItems: 'center', gap:20}}>
+
+        {/* TU ID Sign In Button */}
+        <Pressable style={styles.signInOptionButton}>
+          <Image style={styles.signInLogo} source={require('../assets/Tulsa Logos/New_Logo_2022/No BG/TU-Bell.png')}/>
+          <Text>Sign in with TUID</Text>
+        </Pressable>
+        {/* Google Sign In Button */}
+        <Pressable style={styles.signInOptionButton}>
+          <Image style={styles.signInLogo} source={require('../assets/Tulsa Logos/New_Logo_2022/No BG/Google-Logo.png')}/>
+          <Text>Sign in with Google</Text>
+        </Pressable>
+        {/* FB Sign In */}
+        <Pressable style={styles.signInOptionButton}>
+          <Image style={styles.signInLogo} source={require('../assets/Tulsa Logos/New_Logo_2022/No BG/Meta-Symbol.png')}/>
+          <Text>Sign in with Meta</Text>
+        </Pressable>
+      </View>
+
     </View>
   )
 }
@@ -50,8 +84,9 @@ const styles = StyleSheet.create({
     gap:10
   },
   logo:{
-    width:100,
-    height:100,
+    width:140,
+    height:120,
+    bottom:50
   },
   title:{
     fontSize:20,
@@ -64,20 +99,34 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor:'white',
     borderRadius:8,
-    width:343
+    width:355
   },
   signin:{
     alignItems:'flex-start',
     gap:20
+  },
+  signInText:{
+    color:'#D0B787'
+  },
+  signInLogo:{
+    width:24,
+    height:24,
+    margin:50
+  },
+  signInOptionButton:{flexDirection:'row', backgroundColor:'white', width:355, alignItems:'center', height:44, borderRadius:8},
+  line:{
+    flex: 0.4,
+    height: 1,
+    backgroundColor: 'white'
   },
   checkbox: {
     margin: 8,
   },
   button:{
     height: 40,
-    borderWidth: 1,
+    borderRadius:8,
     padding: 10,
-    width:343,
+    width:355,
     justifyContent:'center',
     alignItems:'center',
     backgroundColor:'#787878',
