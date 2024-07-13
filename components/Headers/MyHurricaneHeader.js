@@ -3,28 +3,26 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 
-function DefaultHeader() {
+function MyHurricaneHeader() {
   return (
     <View style={styles.headerOutRect}>
       <View style={styles.headerInRect}>
         
         {/* Hamburger Menu and Calendar Icons */}
         <View style={styles.headerInRectSmall}>
-          <Ionicons style={styles.icons} size={30} name='menu'></Ionicons>
-          <Ionicons style={styles.icons} size={30} name='calendar'></Ionicons>
+          <Ionicons style={styles.icons} size={30} name='mail-outline'></Ionicons>
         </View>
-        <Image style={styles.logo} source={require('../../assets/Tulsa Logos/New_Logo_2022/No BG/Tulsa_Flags_BluBG-removebg-preview.png')}/>
+        <Text style={{color:'white'}}>MY HURRICANE</Text>
         {/* Search and Players Icons */}
         <View style={styles.headerInRectSmall}>
-          <Ionicons style={styles.icons} size={30} name='search'></Ionicons>
-          <Ionicons style={styles.icons} size={30} name='people'></Ionicons>
+          <Ionicons style={styles.icons} size={30} name='settings-outline'></Ionicons>
         </View>
       </View>
     </View>
   )
 }
 
-export default DefaultHeader;
+export default MyHurricaneHeader;
 
 const styles = StyleSheet.create({
   headerOutRect:{
