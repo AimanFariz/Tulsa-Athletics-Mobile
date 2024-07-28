@@ -2,7 +2,7 @@ import React from 'react'
 import { View, StyleSheet, Text, Image, Pressable} from 'react-native'
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-export default function () {
+export default function ResultsCard() {
   return (
     <View style={styles.outerContainer}>
         <View style={styles.innerContainer}>
@@ -14,7 +14,7 @@ export default function () {
               <Text style={styles.textDate}>Sat 16 Mar</Text>
               <Text style={styles.textVenue}>AAC Championship</Text>
             </View>
-            
+
 
             {/* Logo and Nama Pasukan */}
             <View style={{flexDirection:'column'}}>
@@ -22,12 +22,14 @@ export default function () {
               <View style={{flexDirection:'row', alignItems:'center'}}>
                 <Image style={styles.logo} source={require('../../assets/Tulsa Logos/New_Logo_2022/No BG/Tulsa_Flags_WhtBG-removebg-preview.png')}/>
                 <Text style={{marginLeft:20, fontSize:12}}>Tulsa</Text>
+                <Text>98</Text>
               </View>
 
               {/* Team 2 */}
               <View style={{flexDirection:'row', alignItems:'center'}}>
                 <Image style={styles.logo} source={require('../../assets/Tulsa Logos/New_Logo_2022/No BG/Tulsa_Flags_WhtBG-removebg-preview.png')}/>
                 <Text style={{marginLeft:20, fontSize:12}}>Tulsa</Text>
+                <Text>97</Text>
               </View>
             </View>
 
@@ -51,7 +53,7 @@ export default function () {
             <View style={{flexDirection:'column'}}>
               <Ionicons size={15} name='calendar'></Ionicons>
               <Pressable style = {{padding:10, backgroundColor:'red', borderRadius:5}}>
-                <Text style={{fontSize:10}}>Set Reminder</Text>
+                <Text style={{fontSize:10}}>Match Review</Text>
               </Pressable>
             </View>
           </View>

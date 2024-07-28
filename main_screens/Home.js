@@ -1,14 +1,14 @@
 import React from 'react'
-import { View } from 'react-native'
+import { ScrollView, View } from 'react-native'
 
 import DefaultHeader from '../components/Headers/DefaultHeader'
-import MainScroll from '../components/Mains/HomeScroll'
+import HomeScroll from '../components/Mains/HomeScroll'
 
 export default function Home() {
   return (
-    <View>
+    <>
         <DefaultHeader/>
-        <MainScroll/>
-    </View>
+        <ScrollView style={{backgroundColor:'white'}}><HomeScroll/></ScrollView>
+    </>
   )
 }

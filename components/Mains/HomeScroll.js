@@ -2,12 +2,14 @@ import React, { useState } from 'react'
 import { Text, View, ScrollView, StyleSheet} from 'react-native'
 import { SelectList } from 'react-native-dropdown-select-list'
 import Ionicons from '@expo/vector-icons/Ionicons';
-import UpcomingFixturesCarousel from '../Specials/UpcomingFixturesCarouselBlue';
+import UpcomingFixturesCarousel from '../Specials/UpcomingFixturesCarousel';
 import NewsCard from '../Specials/NewsCard';
+import ResultsCarousel from '../Specials/ResultsCarousel';
 
 export default function HomeScroll() {
 
     const [selected, setSelected] = useState("");
+    const [results, setResults] = useState(false)
     const sportsLists = [
         {key:'1', value:"Men's Soccer"},
         {key:'2', value:"Women's Soccer"},
@@ -20,7 +22,12 @@ export default function HomeScroll() {
         {key:'9', value:"Rowing"},
         {key:'10', value:"Track and Field"},
     ]
-
+    const toggleResults = () => {
+        setResults(true);
+    };
+    const toggleUpcoming = ()=>{
+        setResults(false)
+    }
   return (
     <ScrollView style={{padding:20}} >
 
@@ -28,15 +35,14 @@ export default function HomeScroll() {
         <View>
             {/* Links */}
             <View style={{flexDirection:'row', gap:20}}>
-                <Text style={{textDecorationLine:'underline'}}>Upcoming</Text>
-                <Text>Results</Text>
+                <Text onPress={toggleUpcoming} style={{textDecorationLine:results==false?'underline':'none'}}>Upcoming</Text>
+                <Text onPress={toggleResults} style={{textDecorationLine:results==true?'underline':'none'}}>Results</Text>
             </View>
 
             {/*Sports Filter and Calendar */}
             <View style={{flex:1, flexDirection:'row', gap:20, alignItems:'flex-start', marginVertical:20}}>
                 <View style={{maxWidth:150}}>
                     <SelectList data={sportsLists} search={false} setSelected={setSelected} placeholder='All Sports' maxHeight={200}/>
-
                 </View>
                 <View>
                 <Ionicons style={styles.icons} size={30} name='calendar'></Ionicons>
@@ -45,22 +51,20 @@ export default function HomeScroll() {
             </View>
 
             {/* Horizontal Scrollview --> Fixtures and Results */}
-            <ScrollView horizontal={true}>
-                <UpcomingFixturesCarousel/>
-                <UpcomingFixturesCarousel/>
-                <UpcomingFixturesCarousel/>
+            <ScrollView>
+                {results==false?<UpcomingFixturesCarousel/>:<ResultsCarousel/>}
             </ScrollView>
         </View>
         {/* What's New section */}
         <View>
             {/* Title and Ze Icons */}
-            <View style={{flexDirection:'row',borderWidth:1, borderColor:'red',justifyContent:'space-between'}}>
+            <View style={{flexDirection:'row',justifyContent:'space-between'}}>
                 {/* Title */}
-                <View style={{borderWidth:1, borderColor:'red', padding:5,marginTop:5}}>
+                <View style={{padding:5,marginTop:5}}>
                     <Text style={{fontSize:18}}>What's New</Text>
                 </View>
                 {/* Icons , 3+1*/}
-                <View style={{flexDirection:'row', gap:30, justifyContent:'flex-start',borderWidth:1, borderColor:'red'}}>
+                <View style={{flexDirection:'row', gap:30, justifyContent:'flex-start'}}>
                     {/* 3 Icons - News format selector */}
                     <View style={{flexDirection:'row', gap:5}}>
                         <Ionicons style={styles.icons} size={20} name='calendar'></Ionicons>

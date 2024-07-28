@@ -1,13 +1,14 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, ScrollView } from 'react-native'
 import MyHurricaneHeader from '../components/Headers/MyHurricaneHeader'
+import MyHurricaneScroll from '../components/Mains/MyHurricaneScroll'
 
 
 export default function MyHurricane() {
   return (
-    <View>
+    <>
         <MyHurricaneHeader/>
-        <Text>My Hurricane</Text>
-    </View>
+        <ScrollView><MyHurricaneScroll/></ScrollView>
+    </>
   )
 }

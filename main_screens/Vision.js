@@ -1,13 +1,14 @@
 import React from 'react'
-import { View, Text} from 'react-native'
+import { View, Text, ScrollView} from 'react-native'
 
 import DefaultHeader from '../components/Headers/DefaultHeader'
+import VisionScroll from '../components/Mains/VisionScroll'
 
 export default function Vision() {
   return (
-    <View>
+    <>
         <DefaultHeader/>
-        <Text>Vision</Text>
-    </View>
+        <ScrollView><VisionScroll/></ScrollView>
+    </>
   )
 }

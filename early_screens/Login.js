@@ -1,34 +1,68 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, Image, StyleSheet, Pressable, Alert } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, TextInput, Image, StyleSheet, Pressable, Alert, Button } from 'react-native';
 import Checkbox from 'expo-checkbox';
 import { useNavigation } from '@react-navigation/native';
+import { FIREBASE_AUTH } from '../Firebase';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 
 function Login() {
+  const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isChecked, setChecked] = useState(false);
+  const [loading,setLoading] = useState(false)
+  const [isLogin, setIsLogin] = useState(true)
+  const auth = FIREBASE_AUTH
+  
+
   const navigation = useNavigation();
 
-  const handleLogin = () => {
-    if (username === 'admin' && password === 'englishorspanish') {
-      navigation.replace('Tabs');
-    } else {
-      Alert.alert('Invalid credentials', 'Please enter the correct username and password');
+  // const handleLogin = () => {
+  //   if (username === 'admin' && password === '123') {
+  //     navigation.replace('Tabs');
+  //   } else {
+  //     Alert.alert('Invalid credentials', 'Please enter the correct username and password');
+  //   }
+  // };
+  const handleEmailSignIn = async()=>{
+    setLoading(true)
+    try{
+      const response = await signInWithEmailAndPassword(auth,email,password)
+      navigation.navigate('Tabs')
+    }catch(error){
+      console.log(error)
+      alert('Registration failed for some reason: ' + error.message)
+    }finally{
+      setLoading(false)
     }
-  };
+  }
+  const handleEmailSignUp = async()=>{
+    setLoading(true)
+    try{
+      const response = await createUserWithEmailAndPassword(auth,email,password)
+      console.log(response)
+      alert('Check your emails! You created an account!')
+    }catch(error){
+      console.log(error)
+      alert('Registration failed for some reason: ' + error.message)
+    }finally{
+      setLoading(false)
+    }
+  }
 
   return (
     <View style={styles.container}>
       <Image style={styles.logo} source={require('../assets/Tulsa Logos/New_Logo_2022/No BG/Tulsa_Flags_BluBG-removebg-preview.png')} />
       {/* Title and Inputs */}
       <View style={styles.signin}>
-        <Text style={styles.title}>Sign In</Text>
+        <Text style={styles.title}>{isLogin?"Sign In":"Sign Up"}</Text>
         <TextInput
           style={styles.input}
           placeholder='Username or Email'
           placeholderTextColor={'#667085'}
-          value={username}
-          onChangeText={setUsername}
+          value={email}
+          onChangeText={(text)=>setEmail(text)}
+          autoCapitalize='none'
         />
         <TextInput
           style={styles.input}
@@ -36,7 +70,7 @@ function Login() {
           placeholderTextColor={'#667085'}
           secureTextEntry
           value={password}
-          onChangeText={setPassword}
+          onChangeText={(katalaluan)=>setPassword(katalaluan)}
         />
         
         {/* checkbox Remember Me */}
@@ -49,20 +83,33 @@ function Login() {
           <Text style={{ color: 'white' }}>Remember Me</Text>
         </View>
         {/* Sign In Button */}
-        <Pressable
+{isLogin?
+<Pressable
   style={[
     styles.button,
     (username.length > 0 || password.length > 0) && { backgroundColor: '#D0B787' }
   ]}
-  onPress={handleLogin}
+  onPress={handleEmailSignIn}
 >
   <Text style={[styles.signInText,(username.length > 0 || password.length > 0) && { color: 'black' }]}>Sign In</Text>
-</Pressable>
+</Pressable>:
+<Pressable
+  style={[
+    styles.button,
+    (username.length > 0 || password.length > 0) && { backgroundColor: '#D0B787' }
+  ]}
+  onPress={handleEmailSignUp}
+>
+  <Text style={[styles.signInText,(username.length > 0 || password.length > 0) && { color: 'black' }]}>Sign Up</Text>
+</Pressable>}
+        
 
       </View>
       {/* Forgot password and create account */}
       <Text style={{ color: 'white', marginTop: 5 }}>Forgot password?</Text>
-      <Text style={{ color: 'white', marginTop: 5 }}>Don't have an account yet? <Text style={{textDecorationLine:'underline'}}>Register Now</Text> </Text>
+      <Pressable onPress={()=>setIsLogin(state1=>!state1)}>
+        <Text style={{ color: 'white', marginTop: 5 }}>{isLogin?"Don't have an account yet?":"Already have an account?"} <Text style={{textDecorationLine:'underline'}}>{isLogin?"Sign Up":"Sign In"}</Text> </Text>
+      </Pressable>
 
       {/* Or line */}
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
