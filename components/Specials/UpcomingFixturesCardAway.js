@@ -2,7 +2,7 @@ import React from 'react'
 import { View, StyleSheet, Text, Image, Pressable} from 'react-native'
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-export default function ResultsCard() {
+export default function UpcomingFixturesCardAway() {
   return (
     <View style={styles.outerContainer}>
         <View style={styles.innerContainer}>
@@ -14,7 +14,7 @@ export default function ResultsCard() {
               <Text style={styles.textDate}>Sat 16 Mar</Text>
               <Text style={styles.textVenue}>AAC Championship</Text>
             </View>
-
+            
 
             {/* Logo and Nama Pasukan */}
             <View style={{flexDirection:'column'}}>
@@ -22,19 +22,18 @@ export default function ResultsCard() {
               <View style={{flexDirection:'row', alignItems:'center'}}>
                 <Image style={styles.logo} source={require('../../assets/Tulsa Logos/New_Logo_2022/No BG/Tulsa_Flags_WhtBG-removebg-preview.png')}/>
                 <Text style={{marginLeft:20, fontSize:12}}>Tulsa</Text>
-                <Text>98</Text>
               </View>
 
               {/* Team 2 */}
               <View style={{flexDirection:'row', alignItems:'center'}}>
                 <Image style={styles.logo} source={require('../../assets/Tulsa Logos/New_Logo_2022/No BG/Tulsa_Flags_WhtBG-removebg-preview.png')}/>
                 <Text style={{marginLeft:20, fontSize:12}}>Tulsa</Text>
-                <Text>97</Text>
               </View>
             </View>
 
           </View>
-
+          {/* Line tgh */}
+          <View style={{borderWidth:1,borderColor:'#9D9D9D'}}></View>
           {/* Kanan */}
           <View style={{flexDirection:'column', justifyContent:'space-between'}}>
             {/* Time, Timezone*/}
@@ -52,8 +51,8 @@ export default function ResultsCard() {
             {/* Reminder and Livestream Icons */}
             <View style={{flexDirection:'column'}}>
               <Ionicons size={15} name='calendar'></Ionicons>
-              <Pressable style = {{padding:10, backgroundColor:'red', borderRadius:5}}>
-                <Text style={{fontSize:10}}>Match Review</Text>
+              <Pressable style = {{padding:10, backgroundColor:'white', borderRadius:5, borderWidth:1, borderColor:'#A8A7A7'}}>
+                <Text style={{fontSize:10}}>Set Reminder</Text>
               </Pressable>
             </View>
           </View>
@@ -65,7 +64,7 @@ export default function ResultsCard() {
 const styles = StyleSheet.create({
     outerContainer:{
         borderRadius:5,
-        backgroundColor:'#003595',
+        backgroundColor:'#D0B787',
         width:320,
         height:112,
         marginRight:5
@@ -78,7 +77,8 @@ const styles = StyleSheet.create({
         top:2,
         borderRadius:5,
         flexDirection:'row',
-        padding:5
+        justifyContent:'space-around',
+        paddingVertical:7
     },
     logo:{
       width:25,

@@ -2,7 +2,7 @@ import React from 'react'
 import { View, StyleSheet, Text, Image, Pressable} from 'react-native'
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-export default function UpcomingFixturesCard() {
+export default function UpcomingFixturesCardHome() {
   return (
     <View style={styles.outerContainer}>
         <View style={styles.innerContainer}>
@@ -32,7 +32,8 @@ export default function UpcomingFixturesCard() {
             </View>
 
           </View>
-
+          {/* Line tgh */}
+          <View style={{borderWidth:1,borderColor:'#9D9D9D'}}></View>
           {/* Kanan */}
           <View style={{flexDirection:'column', justifyContent:'space-between'}}>
             {/* Time, Timezone*/}
@@ -50,7 +51,7 @@ export default function UpcomingFixturesCard() {
             {/* Reminder and Livestream Icons */}
             <View style={{flexDirection:'column'}}>
               <Ionicons size={15} name='calendar'></Ionicons>
-              <Pressable style = {{padding:10, backgroundColor:'red', borderRadius:5}}>
+              <Pressable style = {{padding:10, backgroundColor:'white', borderRadius:5, borderWidth:1, borderColor:'#A8A7A7'}}>
                 <Text style={{fontSize:10}}>Set Reminder</Text>
               </Pressable>
             </View>
@@ -76,7 +77,8 @@ const styles = StyleSheet.create({
         top:2,
         borderRadius:5,
         flexDirection:'row',
-        padding:5
+        justifyContent:'space-around',
+        paddingVertical:7
     },
     logo:{
       width:25,

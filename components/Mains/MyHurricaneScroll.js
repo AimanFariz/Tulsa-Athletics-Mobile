@@ -3,7 +3,7 @@ import { ScrollView, StyleSheet,Text} from 'react-native'
 
 export default function MyHurricaneScroll() {
   return (
-    <ScrollView>
+    <ScrollView style={{padding:20}}>
         <Text>My Hurricane Scroll</Text>
     </ScrollView>
   )
